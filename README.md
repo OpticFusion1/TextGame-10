@@ -1,2 +1,2 @@
-# Mitchell-Moser-Zollinger-Team
-Repository for CIT 260 game
+# City of Aaron Game
+A text game in Java based on Hammurabi
