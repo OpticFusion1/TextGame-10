@@ -6,7 +6,7 @@ package view;
 
 /**
  *
- * @author Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class MainMenuView extends ViewBase {
 

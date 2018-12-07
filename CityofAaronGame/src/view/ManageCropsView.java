@@ -7,7 +7,7 @@ import model.Crops;
 
 /**
  *
- * @author Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class ManageCropsView extends ViewBase {
     int buy = 0;

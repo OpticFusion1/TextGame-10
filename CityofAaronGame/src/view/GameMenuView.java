@@ -9,7 +9,7 @@ import model.Game;
 /**
  *
  *
- * @author Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class GameMenuView extends ViewBase {
 

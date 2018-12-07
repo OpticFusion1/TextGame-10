@@ -14,7 +14,7 @@ import model.Provision;
 
 /**
  *
- * @author Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class StorehouseControl {
     private final String[] args = new String[3];

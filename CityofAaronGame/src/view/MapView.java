@@ -10,7 +10,7 @@ import model.Location;
 
 /**
  *
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class MapView extends ViewBase {
 

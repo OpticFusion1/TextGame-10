@@ -4,7 +4,7 @@ import model.Storehouse;
 import exceptions.GameControlException;
 
 /**
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class WheatControl {
     public static void sortStorehouse(Storehouse storehouse) {

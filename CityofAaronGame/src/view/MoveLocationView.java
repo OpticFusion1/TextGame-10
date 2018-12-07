@@ -12,7 +12,7 @@ import model.Point;
 
 /**
  *
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class MoveLocationView extends ViewBase {
 

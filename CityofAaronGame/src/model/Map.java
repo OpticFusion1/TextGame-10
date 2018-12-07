@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 import java.util.Arrays;
 /**
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class Map implements Serializable {
     private Location[][] locations;

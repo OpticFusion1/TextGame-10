@@ -11,7 +11,7 @@ import model.Game;
 
 /**
  *
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class NewGameView extends ViewBase {
 

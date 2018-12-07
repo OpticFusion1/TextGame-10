@@ -1,14 +1,9 @@
 package model;
 
-import app.CityOfAaron;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class Provision extends InventoryItem implements Serializable {
 

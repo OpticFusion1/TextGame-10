@@ -4,7 +4,7 @@
 package view;
 
 /**
- * @author Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public interface View {
     public void displayView();

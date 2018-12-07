@@ -6,7 +6,7 @@ import java.io.IOException;
 
 /**
  *
- * @author Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class LoadGameView extends ViewBase {
 

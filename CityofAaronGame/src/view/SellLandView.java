@@ -18,7 +18,7 @@ import model.Crops;
 
 /**
  *
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class SellLandView extends ViewBase {
 
