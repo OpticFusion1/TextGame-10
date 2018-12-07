@@ -3,15 +3,13 @@ package view;
 import app.CityOfAaron;
 import control.GameControl;
 import exceptions.GameControlException;
-import exceptions.PeopleControlException;
-import exceptions.WheatControlException;
 import model.AnnualReport;
 import model.Game;
 
 /**
  *
  *
- * @author Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class GameMenuView extends ViewBase {
 
@@ -103,8 +101,8 @@ public class GameMenuView extends ViewBase {
             }
             
             return true;
-        } catch (WheatControlException WCE) {
-            System.out.println(WCE.getMessage());
+        } catch (Exception ex) {
+            ErrorView.display(this.getClass().getName(), "Returning to Manage Crops Menu.");
         }
         return false;
     }
@@ -129,7 +127,7 @@ public class GameMenuView extends ViewBase {
         crops.displayView();
     }
 
-    private void liveYear() throws WheatControlException {
+    private void liveYear() {
         try {
             Game oldGame = CityOfAaron.getCurrentGame();
 
@@ -171,8 +169,8 @@ public class GameMenuView extends ViewBase {
             }
 
             pause(3000);
-        } catch (GameControlException | PeopleControlException | WheatControlException e) {
-            this.console.println(e.getMessage());
+        } catch (GameControlException e) {
+            ErrorView.display(this.getClass().getName(), e.getMessage());
         }
     }
 

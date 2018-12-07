@@ -1,13 +1,15 @@
 package model;
+
 import java.io.Serializable;
 
 /**
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class Provision extends InventoryItem implements Serializable {
+
     private boolean perishable;
-    
-    public Provision (){
+
+    public Provision() {
         //Empty constructor for JavaBeans
     }
 
@@ -18,24 +20,24 @@ public class Provision extends InventoryItem implements Serializable {
         setCondition(aCondition);
         setPerishable(aPerishable);
     }
-    
-    public boolean isPerishable(){
+
+    public boolean isPerishable() {
         return perishable;
     }
-    
-    public void setPerishable(boolean perishable){
+
+    public void setPerishable(boolean perishable) {
         this.perishable = perishable;
     }
-    
+
     // toSting method
     @Override
     public String toString() {
-        return "\n{ Provision: " 
-               + name + ", "
-               + perishable + ", "
-               + type + ", "
-               + quantity + ", "
-               + condition + " }";
+        return "\nProvision: "
+                + name + ", "
+                + type + ", "
+                + quantity + ", "
+                + condition + ", "
+                + perishable;
     }
-    
+
 }

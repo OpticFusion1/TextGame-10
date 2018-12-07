@@ -7,8 +7,8 @@
 //Make sure that the city has enough wheat in storage to plant this many acres (You can plant 2 acres with one bushel of wheat). If not, show a message and ask the user to enter the value again.
 //Make sure that the city has enough people to tend the land. One person can take care of 10 acres. If there are not enough people, show a message and ask the user to enter a different value. ~~Note: this requirement has been moved from the "Buy Land" menu.
 //Calculate the number of bushels required to plant the crops.
-// save acres number to WheatControl.setAcresToPlant()
-// save wheat bushels as seed number to WheatControl.setAcresToPlant()
+// save acres number to Crops.setAcresToPlant()
+// save wheat bushels as seed number to Crops.setWheatToPlant()
 // DURING LIVE THE YEAR >>>
 //Subtract this amount from the wheat in storage. Display the amount of wheat you have left.
 //Update game state to save how many acres have been planted.
@@ -17,11 +17,11 @@
 package view;
 
 import app.CityOfAaron;
-import control.WheatControl;
+import model.Crops;
 
 /**
  *
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class PlantCropsView extends ViewBase {
 
@@ -75,7 +75,7 @@ public class PlantCropsView extends ViewBase {
             int people = CityOfAaron.getCurrentGame().getCurrentPopulation();
             // AM: trying to decide if people can plant the acres they just bought (same year) or not...
             // .... and if so, must also NOT let them plant acres they just sold (same year)
-            //int acresToBuyNext = LandControl.getLandToBuy();
+            //int acresToBuyNext = Crops.getLandToBuy();
             //int totalLand = land + acresToBuyNext;
 
             if (acresToPlant < 0) {
@@ -112,8 +112,8 @@ public class PlantCropsView extends ViewBase {
     }
 
     private void plantCrops(int acresToPlant) {
-        WheatControl.setAcresToPlant(acresToPlant);
-        WheatControl.setWheatToPlant(acresToPlant/2);
+        Crops.setAcresToPlant(acresToPlant);
+        Crops.setWheatToPlant(acresToPlant/2);
         this.console.println("Success! You will plant " + acresToPlant + " acres when you live the year.");
     }
 }

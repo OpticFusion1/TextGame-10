@@ -3,7 +3,7 @@ package exceptions;
 
 /**
  *
- * @author teresamoser, ambermitchell, amyzollinger
+ * @author Amber Mitchell
  */
 public class GameControlException extends Exception {
 

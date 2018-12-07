@@ -1,13 +1,13 @@
 package control;
 
 import app.CityOfAaron;
-import exceptions.MapControlException;
+import exceptions.GameControlException;
 import model.Location;
 import model.Map;
 import model.Point;
 
 /**
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class MapControl extends Map {
 
@@ -107,26 +107,23 @@ public class MapControl extends Map {
         return mainMap;
     }
 
-    public static boolean moveLocation(int newRow, int newColumn) throws MapControlException {
-        boolean moved = false;
+    public static void moveLocation(int newRow, int newColumn) throws GameControlException {
         // update current location, make sure it's actual row/col, not index
         Point point = new Point();
         point.setRow(newRow);
         point.setColumn(newColumn);
 
         Map map = CityOfAaron.getCurrentGame().getTheMap();
-        map.setCurrentLocation(point);
         Location[][] mapArray = CityOfAaron.getCurrentGame().getTheMap().getLocations();
 
-        if (!(newRow < 1 | newRow > mapArray.length | newColumn < 1 | newColumn > mapArray[0].length)) {
-            moved = true;
-        } else {
-            throw new MapControlException("Point is not on map.");
+        if (newRow < 1 || newRow > mapArray.length || newColumn < 1 || newColumn > mapArray[0].length) {
+            throw new GameControlException("Point is not on map.");
         }
-        return moved;
+
+        map.setCurrentLocation(point);
     }
 
-    public static String viewMap(Location[][] mapArray) throws MapControlException {
+    public static String viewMap(Location[][] mapArray) throws GameControlException {
         // loop through and make it look pretty for the two dimensions
         String mapString = "";
         for (Location[] mapArray1 : mapArray) {
@@ -137,7 +134,7 @@ public class MapControl extends Map {
                     String name = item.getName();
                     mapString += "##    " + symbol + "  " + name + "    ##";
                 } else {
-                    throw new MapControlException("Map not created.");
+                    throw new GameControlException("Map not created.");
                 }
             }
             mapString += "\n###################################################################################################################################";

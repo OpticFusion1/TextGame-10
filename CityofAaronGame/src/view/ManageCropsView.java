@@ -3,12 +3,11 @@
  */
 package view;
 
-import control.LandControl;
-import control.WheatControl;
+import model.Crops;
 
 /**
  *
- * @author Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class ManageCropsView extends ViewBase {
     int buy = 0;
@@ -24,11 +23,11 @@ public class ManageCropsView extends ViewBase {
     }
     @Override
     protected String getMessage() {
-        buy = LandControl.getLandToBuy();
-        sell = LandControl.getLandToSell();
-        feed = WheatControl.getBushelsToFeedPeople();
-        crops = WheatControl.getAcresToPlant();
-        tithes = WheatControl.getTithingPercentToPay();
+        buy = Crops.getLandToBuy();
+        sell = Crops.getLandToSell();
+        feed = Crops.getBushelsToFeedPeople();
+        crops = Crops.getAcresToPlant();
+        tithes = Crops.getTithingPercentToPay();
         return "\n\n--------------------\n"
                 + "Manage Crops\n"
                 + "--------------------\n"

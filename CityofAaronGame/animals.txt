@@ -1,0 +1,11 @@
+Animals
+
+NAME                                     TYPE            QUANTITY        CONDITION             AGES
+------------------------------------------------------------------------------------------------------
+Dairy Cows                               Animal          20              Good            [1, 2, 3, 4]
+Oxen                                     Animal          20              Good            [1, 2, 3, 4]
+Horse                                    Animal          20              Good            [1, 2, 3, 4]
+Pig                                      Animal          20              Good            [1, 2, 3, 4]
+Chicken                                  Animal          20              Good            [1, 2, 3, 4]
+
+End

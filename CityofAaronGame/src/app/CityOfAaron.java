@@ -5,7 +5,7 @@
 package app;
 
 /**
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 //import java.util.*;
 import java.io.BufferedReader;

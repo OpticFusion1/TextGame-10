@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 
 /**
  *
- * @author Amy
+ * @author Amber Mitchell
  */
 public class ErrorView {
     private static PrintWriter errorFile = CityOfAaron.getOutFile();

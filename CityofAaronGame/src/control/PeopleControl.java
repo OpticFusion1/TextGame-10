@@ -1,27 +1,26 @@
 package control;
 
 import model.Game;
-import exceptions.PeopleControlException;
 import exceptions.GameControlException;
 
 /**
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class PeopleControl {
 
     // store the user rating message
     private static String userMessage = "";
 
-    public static int calculateMortality(int bushelsSetAside, int currentPopulation) throws PeopleControlException {
+    public static int calculateMortality(int bushelsSetAside, int currentPopulation) throws GameControlException {
 
 // Calculate the number of people who are not fed the amount required to
 // sustain life (20 bushels per person). They die. It is very sad.
         if (bushelsSetAside < 0) {
-            throw new PeopleControlException("Bushels set aside cannot be less than 0");
+            throw new GameControlException("Bushels set aside cannot be less than 0");
         }
 
         if (currentPopulation < 0) {
-            throw new PeopleControlException("Current Population cannot be less than 0");
+            throw new GameControlException("Current Population cannot be less than 0");
         }
 
         int numberOfPeopleFed = bushelsSetAside / 20;
@@ -42,7 +41,6 @@ public class PeopleControl {
     }
 
     public static int calculateUserRating(Game game) throws GameControlException {
-       try{
         String[] heroes = {
             "You have the wisdom of King Benjamin and have led your people well!",
             "As strategic as Captain Moroni you have been able to provide for the people and keep your city safe.",
@@ -78,9 +76,6 @@ public class PeopleControl {
             userRating = 2;
             return userRating;
         }
-       } catch  (NullPointerException e){
-           System.out.println(e.getMessage());
-       }
         return 0;
         
     }

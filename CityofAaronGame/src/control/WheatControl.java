@@ -1,51 +1,12 @@
 package control;
 
 import model.Storehouse;
-import exceptions.WheatControlException;
 import exceptions.GameControlException;
 
 /**
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class WheatControl {
-    // here we store all the upcoming data from user inputs (mostly from ManageCropsView) - GOES WITH LANDCONTROL
-    private static int bushelsToFeedPeople = 0;
-    private static int wheatToPlant = 0; // this is how many bushels of wheat we'll use as seed
-    private static int acresToPlant = 0; // this is how many acres we actually want to plant
-    private static int tithingPercentToPay = 0;
-
-    public static int getBushelsToFeedPeople() {
-        return bushelsToFeedPeople;
-    }
-
-    public static void setBushelsToFeedPeople(int bushelsToFeedPeople) {
-        WheatControl.bushelsToFeedPeople = bushelsToFeedPeople;
-    }
-
-    public static int getWheatToPlant() {
-        return wheatToPlant;
-    }
-
-    public static void setWheatToPlant(int wheatToPlant) {
-        WheatControl.wheatToPlant = wheatToPlant;
-    }
-
-    public static int getAcresToPlant() {
-        return acresToPlant;
-    }
-
-    public static void setAcresToPlant(int acresToPlant) {
-        WheatControl.acresToPlant = acresToPlant;
-    }
-
-    public static int getTithingPercentToPay() {
-        return tithingPercentToPay;
-    }
-
-    public static void setTithingPercentToPay(int tithingPercentToPay) {
-        WheatControl.tithingPercentToPay = tithingPercentToPay;
-    }
-
     public static void sortStorehouse(Storehouse storehouse) {
         // work on this
 //        for (int i=0; i < items.length-1; i++) {
@@ -62,15 +23,14 @@ public class WheatControl {
 //        }
     }
 
-    //AMBER
-    public static int calcLossToRobbers(int tithesPercent, int wheatInStorage) throws WheatControlException, GameControlException {
+    public static int calcLossToRobbers(int tithesPercent, int wheatInStorage) throws GameControlException {
         // Calculate the amount of wheat in storage lost to robbers, based on
         // the percentage of tithing paid. Assume that GameControl.getRandomNumber(low, high) is available to be called.
         if (wheatInStorage < 0) {
-            throw new WheatControlException("Wheat in Storage cannot be less than 0");
+            throw new GameControlException("Wheat in Storage cannot be less than 0");
         }
         if (tithesPercent < 0 || tithesPercent > 100) {
-            throw new WheatControlException("Tithes percent cannot be less than 0 or more than 100");
+            throw new GameControlException("Tithes percent cannot be less than 0 or more than 100");
         }
 
         int low = 1;
@@ -103,26 +63,25 @@ public class WheatControl {
 
     }
     
-    // Teresa
-    public static int calcHarvest (int perAcre, int acresPlanted) throws WheatControlException{
+    public static int calcHarvest (int perAcre, int acresPlanted) throws GameControlException{
         // Calculate the amount of wheat harvested, based on the percentage
         // of tithing paid. This is meant to be returned to the Annual Report harvest number
      
         if (acresPlanted < 0 || perAcre < 1) {
-            throw new WheatControlException("Acres planted cannot be less than 0 or per Acre cannot be less than 1");
+            throw new GameControlException("Acres planted cannot be less than 0 or per Acre cannot be less than 1");
         }
      
         int yield = (perAcre * acresPlanted);
         return yield;
     }
 
-    public static int calcBushelsPerAcre (int tithesPercent) throws WheatControlException, GameControlException{
+    public static int calcBushelsPerAcre (int tithesPercent) throws GameControlException{
         // Calculate the amount of bushels per acre to be harvested, based on the percentage
         // of tithing paid. Assume that GameControl.getRandomNumber(low, high)
         // is available to be called. This is meant to be returned to the Annual Report bushels per acre number.
      
         if (tithesPercent < 0 || tithesPercent > 100) {
-            throw new WheatControlException("Tithes Percent cannot be less than 0 or more than 100");
+            throw new GameControlException("Tithes Percent cannot be less than 0 or more than 100");
         }
         
         int low = 1;

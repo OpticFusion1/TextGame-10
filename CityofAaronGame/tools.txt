@@ -1,0 +1,16 @@
+Tools
+
+NAME                                     TYPE            QUANTITY              CONDITION
+------------------------------------------------------------------------------------------------------
+Shovel                                   Tool            26                         Good
+Plow                                     Tool            10                         Good
+Shovel                                   Tool            5                          Poor
+Spade                                    Tool            7                          Good
+Rake                                     Tool            10                         Fair
+Hoe                                      Tool            8                          Poor
+Plow                                     Tool            3                          Poor
+Hoe                                      Tool            1                          Fair
+Rake                                     Tool            5                          Poor
+Spade                                    Tool            8                          Poor
+
+End

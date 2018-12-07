@@ -1,10 +1,12 @@
 package view;
 
 import control.GameControl;
+import exceptions.GameControlException;
+import java.io.IOException;
 
 /**
  *
- * @author Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class LoadGameView extends ViewBase {
 
@@ -57,17 +59,17 @@ public class LoadGameView extends ViewBase {
     }
 
     private void loadGame(String filename) {
-        // AM: calling function to load saved object and cast it into a Game type object.
-        boolean success = GameControl.loadGameFromFile(filename);
+        try {
+            // AM: calling function to load saved object and cast it into a Game type object.
+            GameControl.loadGameFromFile(filename);
 
-        if (success) {
             this.console.println("Loaded game: \n" + filename + "\n");
             // now head over to the Game View!
             View gameMenu = new GameMenuView();
             gameMenu.displayView();
-        } else {
-            ErrorView.display(this.getClass().getName(), "No valid game name entered. Returning to the Main Menu...");
 
+        } catch (IOException | GameControlException | ClassNotFoundException e) {
+            ErrorView.display(this.getClass().getName(), "No valid game name entered. Returning to the Main Menu...");
         }
 
     }

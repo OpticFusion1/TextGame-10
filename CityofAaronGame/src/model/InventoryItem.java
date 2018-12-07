@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 
 public class InventoryItem implements Serializable {

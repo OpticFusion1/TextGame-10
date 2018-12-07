@@ -4,16 +4,16 @@
 //Get the user’s input.
 //Check to make sure that the value entered by the user is positive. If it is not, show a message and ask the user to enter a new value.
 //Check to make sure that the value entered by the user is not greater than 100. If it is, display a message and ask the user to enter a new value.
-//Save the value entered by the user in WheatControl.setTithingPercentToPay()
+//Save the value entered by the user in Crops.setTithingPercentToPay()
 
  */
 package view;
 
-import control.WheatControl;
+import model.Crops;
 
 /**
  *
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class PayTithingView extends ViewBase {
 
@@ -79,7 +79,7 @@ public class PayTithingView extends ViewBase {
     }
 
     private void payTithing(int tithingPercentToPay) {
-        WheatControl.setTithingPercentToPay(tithingPercentToPay);
+        Crops.setTithingPercentToPay(tithingPercentToPay);
         this.console.println("Success! You will pay " + tithingPercentToPay + "% in tithes when you live the year.");
     }
 }

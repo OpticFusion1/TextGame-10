@@ -2,6 +2,7 @@ package view;
 
 import app.CityOfAaron;
 import control.GameControl;
+import java.io.IOException;
 import model.AnnualReport;
 import model.Game;
 
@@ -9,7 +10,7 @@ import model.Game;
 
 /**
  *
- * @author Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class SaveGameView extends ViewBase {
 
@@ -61,13 +62,17 @@ public class SaveGameView extends ViewBase {
     }
 
     private void saveGame(String filename) {
-        // AM: need to actually call function to save game data to file.
-        Game game = CityOfAaron.getCurrentGame();
-        AnnualReport report = CityOfAaron.getCurrentReport();
-        GameControl.saveGameToFile(filename, game, report);
-
-        // AM: print success to user.
-        this.console.print("Game saved: " + filename + "\n");
+        try {
+            // AM: need to actually call function to save game data to file.
+            Game game = CityOfAaron.getCurrentGame();
+            AnnualReport report = CityOfAaron.getCurrentReport();
+            GameControl.saveGameToFile(filename, game, report);
+            
+            // AM: print success to user.
+            this.console.print("Game saved: " + filename + "\n");
+        } catch (IOException e) {
+            ErrorView.display(this.getClass().getName(), "No valid game name entered. Returning to the Main Menu...");
+        }
         
     }
 }

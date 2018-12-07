@@ -1,0 +1,9 @@
+Provisions
+
+NAME                                     TYPE            QUANTITY        CONDITION       PERISHABLE
+------------------------------------------------------------------------------------------------------
+Bread                                    Provision       200             Good                  true
+Corn Ears (dried)                        Provision       5000            Good                 false
+Corn oil casks                           Provision       1000            Good                  true
+
+End

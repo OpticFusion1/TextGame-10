@@ -6,13 +6,12 @@ package view;
 
 /**
  *
- * @author Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class MainMenuView extends ViewBase {
 
     /**
      * Constructor
-     * @return 
      */
     public MainMenuView() {
         super();
@@ -20,7 +19,7 @@ public class MainMenuView extends ViewBase {
 
     @Override
     protected String getMessage() {
-                return "\n\n--------------------\n"
+        return "\n\n--------------------\n"
                 + "Main Menu\n"
                 + "--------------------\n"
                 + "N - Start new game\n"
@@ -32,6 +31,7 @@ public class MainMenuView extends ViewBase {
 
     /**
      * Get the set of inputs from the user.
+     *
      * @return
      */
     @Override
@@ -52,23 +52,23 @@ public class MainMenuView extends ViewBase {
     @Override
     public boolean doAction(String[] inputs) {
         // Act on the user's input.
-        try{
-        switch (inputs[0].trim().toUpperCase()) {
-            case "N":
-                startNewGame();
-                break;
-            case "L":
-                loadSavedGame();
-                break;
-            case "H":
-                helpMenu();
-                break;
-            case "Q":
-                this.console.println("Thank you for playing. Good-bye.");
-                return false;
-        }
-        }catch (NullPointerException e){
-        ErrorView.display(this.getClass().getName(), "A choice must be made.");
+        try {
+            switch (inputs[0].trim().toUpperCase()) {
+                case "N":
+                    startNewGame();
+                    break;
+                case "L":
+                    loadSavedGame();
+                    break;
+                case "H":
+                    helpMenu();
+                    break;
+                case "Q":
+                    this.console.println("Thank you for playing. Good-bye.");
+                    return false;
+            }
+        } catch (NullPointerException e) {
+            ErrorView.display(this.getClass().getName(), "A choice must be made.");
         }
         return true;
     }

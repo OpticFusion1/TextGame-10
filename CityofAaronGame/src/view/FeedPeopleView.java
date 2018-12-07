@@ -4,7 +4,7 @@
 //User enters a value.
 //Check to make sure that the value is positive. If it is not, show a message and ask the user to enter the value again.
 //Make sure that the city has this much wheat in storage. If not, show a message and ask the user to enter the value again.
-// save the number to WheatControl.setBushelsToFeedPeople()
+// save the number to Crops.setBushelsToFeedPeople()
 // DURING LIVE THE YEAR >>>
 //Subtract this amount from the wheat in storage. Display the amount of wheat you have left.
 //Update the game state to save how many bushels of wheat you have set aside to feed the people.
@@ -13,12 +13,11 @@
 package view;
 
 import app.CityOfAaron;
-import control.WheatControl;
-import java.util.Scanner;
+import model.Crops;
 
 /**
  *
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class FeedPeopleView extends ViewBase {
 
@@ -92,7 +91,7 @@ public class FeedPeopleView extends ViewBase {
     }
 
     private void feedPeople(int bushelsToFeedPeople) {
-        WheatControl.setBushelsToFeedPeople(bushelsToFeedPeople);
+        Crops.setBushelsToFeedPeople(bushelsToFeedPeople);
         this.console.println("Success! You will feed your people " + bushelsToFeedPeople + " bushels when you live the year.");
     }
 }

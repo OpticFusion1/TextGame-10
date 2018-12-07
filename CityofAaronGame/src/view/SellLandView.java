@@ -5,7 +5,7 @@
 //The user enters a value.
 //Check to make sure the value is positive. If not, show a message and ask the user to enter the value again.
 //Make sure that the player has enough acres of land to sell. If not, show a message and ask the user to enter the value again.
-// save sell land number to LandControl.setLandToSell()
+// save sell land number to Crops.setLandToSell()
 // DURING LIVE THE YEAR >>>
 //Subtract the number of acres sold from the acres owned.
 //Add the bushels of wheat that was increased by the selling of land to the bushels of wheat in storage.
@@ -14,15 +14,15 @@
 package view;
 
 import app.CityOfAaron;
-import control.LandControl;
+import model.Crops;
 
 /**
  *
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class SellLandView extends ViewBase {
 
-    int currentPrice = LandControl.getUpcomingLandPrice();
+    int currentPrice = Crops.getUpcomingLandPrice();
 
     /**
      * Constructor
@@ -91,7 +91,7 @@ public class SellLandView extends ViewBase {
     }
 
     private void sellLand(int acresToSell) {
-        LandControl.setLandToSell(acresToSell);
+        Crops.setLandToSell(acresToSell);
         int income = acresToSell * currentPrice;
         this.console.println("Success! You will sell " + acresToSell + " from your acreage when you live the year.\n"
                 + "This will profit you " + income + " bushels of wheat."

@@ -6,13 +6,12 @@ package view;
 import app.CityOfAaron;
 import control.GameControl;
 import exceptions.GameControlException;
-import java.io.IOException;
 import model.AnnualReport;
 import model.Game;
 
 /**
  *
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class NewGameView extends ViewBase {
 
@@ -25,7 +24,7 @@ public class NewGameView extends ViewBase {
 
     @Override
     protected String getMessage() {
-        return "\n\nLet's get playing!\n\n";
+        return "\n\nLet's get to playing!\n\n";
 
     }
 
@@ -73,7 +72,7 @@ public class NewGameView extends ViewBase {
         try {
             GameControl.createNewGame(playerName);
         } catch (GameControlException ex) {
-            ErrorView.display(this.getClass().getName(), "Error: " + ex.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error: Game not created.");
         }
 
         Game thisGame = CityOfAaron.getCurrentGame();

@@ -10,7 +10,7 @@ import exceptions.GameControlException;
 
 /**
  *
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class FinalView extends ViewBase {
 
@@ -19,12 +19,15 @@ public class FinalView extends ViewBase {
 
     /**
      * Constructor
-     * @throws exceptions.GameControlException
      */
-    public FinalView() throws GameControlException {
+    public FinalView() {
         super();
-        rating = PeopleControl.calculateUserRating(CityOfAaron.getCurrentGame());
-        userMessage = PeopleControl.getUserMessage();
+        try {
+            rating = PeopleControl.calculateUserRating(CityOfAaron.getCurrentGame());
+            userMessage = PeopleControl.getUserMessage();
+        } catch (GameControlException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
     }
 
     @Override

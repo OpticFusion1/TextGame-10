@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class Animal extends InventoryItem implements Serializable {
 
@@ -40,16 +40,4 @@ public class Animal extends InventoryItem implements Serializable {
                 + quantity + ", "
                 + condition + " }";
     }
-    //bubble sort for Animals Array List
-
-    public String animals;
-
-    public Animal(String animals) {
-        this.animals = animals;
-    }
-
-    public String getName() {
-        return animals;
-    }
-
 }

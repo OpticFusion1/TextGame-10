@@ -5,14 +5,14 @@ package view;
 
 import app.CityOfAaron;
 import control.MapControl;
-import exceptions.MapControlException;
+import exceptions.GameControlException;
 import model.Location;
 import model.Map;
 import model.Point;
 
 /**
  *
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class MoveLocationView extends ViewBase {
 
@@ -40,8 +40,8 @@ public class MoveLocationView extends ViewBase {
                 + "\n";
         try {
             messageMap += MapControl.viewMap(mapArray);
-        } catch (MapControlException mce) {
-            ErrorView.display(this.getClass().getName(), "Error: " + mce.getMessage());
+        } catch (GameControlException e) {
+            ErrorView.display(this.getClass().getName(), "Error: " + e.getMessage());
         }
         return messageMap;
     }
@@ -109,14 +109,14 @@ public class MoveLocationView extends ViewBase {
 
     private void moveLocation(int row, int col) {
         try {
-            boolean moved = MapControl.moveLocation(row, col);
+            MapControl.moveLocation(row, col);
             // look up the location with above args
             Location newLocation = mapArray[row - 1][col - 1];
             // print to user
             this.console.println("\nYou have moved to:\n" + newLocation.getMapSymbol() + " " + newLocation.getName() + "\n"
                     + newLocation.getDescription() + "\n" + newLocation.getGameTip());
-        } catch (MapControlException mce) {
-            ErrorView.display(this.getClass().getName(), "Error: " + mce.getMessage());
+        } catch (GameControlException e) {
+            ErrorView.display(this.getClass().getName(), "Error: " + e.getMessage());
         }
     }
 }

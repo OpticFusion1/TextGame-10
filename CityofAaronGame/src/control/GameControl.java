@@ -3,6 +3,13 @@ package control;
 import app.CityOfAaron;
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import exceptions.GameControlException;
 import model.Animal;
 import model.AnnualReport;
 import model.Condition;
@@ -13,17 +20,11 @@ import model.Map;
 import model.Player;
 import model.Provision;
 import model.Storehouse;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import model.Author;
-import exceptions.GameControlException;
-import exceptions.PeopleControlException;
-import exceptions.WheatControlException;
+import model.Crops;
 
 /**
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class GameControl {
 
@@ -111,13 +112,12 @@ public class GameControl {
         CityOfAaron.setCurrentReport(report);
 
         // set a year-2 land price
-        LandControl.setUpcomingLandPrice();
+        Crops.setUpcomingLandPrice();
 
         return theGame;
     }
 
-    public static boolean loadGameFromFile(String filename) {
-        boolean worked = false;
+    public static void loadGameFromFile(String filename) throws GameControlException, FileNotFoundException, IOException, ClassNotFoundException {
         // make the game a regular object
         String filepathA = filepath + filename + ".txt";
         Object obj;
@@ -129,27 +129,18 @@ public class GameControl {
             AnnualReport report = (AnnualReport) obj2;
             CityOfAaron.setCurrentGame(game);
             CityOfAaron.setCurrentReport(report);
-            worked = true;
-            return worked;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return worked;
         }
 
     }
 
-    public static void saveGameToFile(String filename, Game game, AnnualReport report) {
+    public static void saveGameToFile(String filename, Game game, AnnualReport report) throws FileNotFoundException, IOException {
         // make the game a regular object
         String filepathB = filepath + filename + ".txt";
         Object obj = (Object) game;
         Object obj2 = (Object) report;
-        try (FileOutputStream f = new FileOutputStream(filepathB)) {
-            ObjectOutputStream o = new ObjectOutputStream(f);
+        try (FileOutputStream f = new FileOutputStream(filepathB); ObjectOutputStream o = new ObjectOutputStream(f)) {
             o.writeObject(obj);
             o.writeObject(obj2);
-            o.close();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -166,30 +157,28 @@ public class GameControl {
      * Process the current year's results and update the Game Object.
      *
      * @param game The current Game object (pass by reference)
-     * @param tithesPercent The percentage of tithing selected for the year
-     * @param bushelsForFood The number of bushels of wheat allocated as food for the year
-     * @param acresToPlant The number of acres to be used for planting
+     * @throws exceptions.GameControlException
      */
-    public static void liveTheYear(Game game) throws GameControlException, WheatControlException, PeopleControlException {
+    public static void liveTheYear(Game game) throws GameControlException {
 
         // get all our upcoming numbers
-        int tithesPercent = WheatControl.getTithingPercentToPay();
-        int bushelsForFood = WheatControl.getBushelsToFeedPeople();
-        int acresToPlant = WheatControl.getAcresToPlant();
-        int wheatToPlant = WheatControl.getWheatToPlant();
-        int landPrice = LandControl.getUpcomingLandPrice();
-        int landToBuy = LandControl.getLandToBuy();
-        int landToSell = LandControl.getLandToSell();
+        int tithesPercent = Crops.getTithingPercentToPay();
+        int bushelsForFood = Crops.getBushelsToFeedPeople();
+        int acresToPlant = Crops.getAcresToPlant();
+        int wheatToPlant = Crops.getWheatToPlant();
+        int landPrice = Crops.getUpcomingLandPrice();
+        int landToBuy = Crops.getLandToBuy();
+        int landToSell = Crops.getLandToSell();
 
         // ERROR here
-        if (game == null || tithesPercent < 0 || tithesPercent > 100
+        if (tithesPercent < 0 || tithesPercent > 100
                 || bushelsForFood < 0 || acresToPlant < 0) {
-            return;
+            throw new GameControlException("Your numbers are impossible! Try again.");
         }
         // ERROR now note if the most important ones are zero and kick back
-//        if (acresToPlant == 0 || bushelsForFood == 0) {
-//            return;
-//        }
+        if (acresToPlant == 0 || bushelsForFood == 0) {
+            throw new GameControlException("You are going to starve everyone! \nPlease update your acres to plant and bushels for food.");
+        }
 
         // next get the current total of wheat bushels in storage and acres owned
         int totalWheat = game.getWheatInStorage();
@@ -240,14 +229,14 @@ public class GameControl {
         CityOfAaron.setCurrentReport(report);
 
         // let's update the land price for next year, needs no argument
-        LandControl.setUpcomingLandPrice();
+        Crops.setUpcomingLandPrice();
         // and reset the manage crops variables for next year
-        WheatControl.setTithingPercentToPay(0);
-        WheatControl.setBushelsToFeedPeople(0);
-        WheatControl.setAcresToPlant(0);
-        WheatControl.setWheatToPlant(0);
-        LandControl.setLandToBuy(0);
-        LandControl.setLandToSell(0);
+        Crops.setTithingPercentToPay(0);
+        Crops.setBushelsToFeedPeople(0);
+        Crops.setAcresToPlant(0);
+        Crops.setWheatToPlant(0);
+        Crops.setLandToBuy(0);
+        Crops.setLandToSell(0);
     }
 
     /**
@@ -293,27 +282,5 @@ public class GameControl {
     protected static void setRandomGenerator(Random random) {
         randomGenerator = random;
     }
-       public void main(String[] args) {
-            //create the unsorted array
-            Animal[] animals = new Animal[5];
-            ArrayList<Integer> ages = null;
-            animals[0] = new Animal("Dairy Cows", ItemType.Animal, 20, Condition.Good, ages);
-            animals[1] = new Animal("Oxen", ItemType.Animal, 20, Condition.Good, ages);
-            animals[2] = new Animal("Horse", ItemType.Animal, 20, Condition.Good, ages);
-            animals[3] = new Animal("Pig", ItemType.Animal, 20, Condition.Good, ages);
-            animals[4] = new Animal("Chicken", ItemType.Animal, 20, Condition.Good, ages);
-
-            //two for-loops, one inside the other
-            for (int i = 0; i < animals.length - 1; i++) {
-                for (int j = i + 1; j < animals.length; j++) {
-                    //if animal[i] > animal[j] then, swap them...
-                    if (animals[i].getName().compareTo(animals[j].getName()) > 0) {
-                        Animal temp = animals[i];
-                        animals[i] = animals[j];
-                        animals[j] = temp;
-                    }
-                }
-            }
-        }
 
 }

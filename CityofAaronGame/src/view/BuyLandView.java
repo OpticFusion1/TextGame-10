@@ -5,7 +5,7 @@
 //The user enters a value
 //Check to make sure the value is positive. If not, show a message and ask the user to enter the value again.
 //Make sure that the player has enough wheat to make the purchase. If not, show a message and ask the user to enter the value again.
-// save buy land number to LandControl.setLandToBuy()
+// save buy land number to Crops.setLandToBuy()
 // DURING LIVE THE YEAR >>>
 //Add the number of acres purchased to the acres owned
 //Subtract the wheat used to purchase the land from the wheat in storage
@@ -13,15 +13,15 @@
 package view;
 
 import app.CityOfAaron;
-import control.LandControl;
+import model.Crops;
 
 /**
  *
- * @authors Amber Mitchell, Teresa Moser, Amy Zollinger
+ * @author Amber Mitchell
  */
 public class BuyLandView extends ViewBase {
 
-    int currentPrice = LandControl.getUpcomingLandPrice();
+    int currentPrice = Crops.getUpcomingLandPrice();
 
     /**
      * Constructor
@@ -93,7 +93,7 @@ public class BuyLandView extends ViewBase {
     }
 
     private void buyLand(int acresToBuy) {
-        LandControl.setLandToBuy(acresToBuy);
+        Crops.setLandToBuy(acresToBuy);
         this.console.println("Success! You will add " + acresToBuy + " to your acreage when you live the year.");
     }
 }
