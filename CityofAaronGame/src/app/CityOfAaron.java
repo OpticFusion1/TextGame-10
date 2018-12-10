@@ -1,6 +1,9 @@
 /*
  * Main class. This is the first code that will be executed when 
  * the program starts.
+ * NOTES: 
+ * All output to the console is using a PrintWriter character stream: There are still several places in the code calling System.out.println(): PeopleControl, GameMenuView, MapView, PlantCropsView, StorehouseView, ViewBase.
+ * FYI, it is not necessary to cast the Game and AnnualReport objects to Object in order to write them out to the file. All objects in Java inherit from java.lang.Object, so they already are Objects and can be used directly by the ObjectOutputStream.
  */
 package app;
 
